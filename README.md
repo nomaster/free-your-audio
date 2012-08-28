@@ -8,7 +8,7 @@ empfehle ich, das Skript [Rubber](https://launchpad.net/rubber/) zu verwenden.
 
 So lässt sich ein PDF erstellen:
 
-  $ rubber -df free-your-audio.tex
+    $ rubber -df free-your-audio.tex
 
 Für die Präsentation empfehle ich
 [QPdfPresenterConsole](http://sourceforge.net/projects/qpdfpresenter/)
