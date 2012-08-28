@@ -1,0 +1,283 @@
+\documentclass[aspectratio=1610]{beamer}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{xcolor,ulem}
+
+\definecolor{black}{HTML}{3C3C3C}
+\definecolor{green}{HTML}{BBE08C}
+
+\mode<presentation>
+{
+  \usetheme[compress]{Torino}
+}
+
+\newcommand{\src}[1]{
+  \raggedright{
+    \footnote{
+      \small{\url{#1}}
+    }
+  }
+}
+
+\newcommand{\img}[1]{
+  \includegraphics[width=\columnwidth]{#1}
+}
+
+\newcommand{\two}[2]{
+  \begin{columns}[1]
+    \column{.5\textwidth}
+    #1
+    \column{.5\textwidth}
+    #2
+  \end{columns}
+}
+
+\newcommand{\concept}[2]{
+  \begin{block}{#1}
+    \pause
+    #2
+  \end{block}
+}
+
+\newcommand{\pattern}[2]{
+  \begin{alertblock}{Problem}
+    #1
+  \end{alertblock}
+  \pause
+  \begin{exampleblock}{Lösung}
+    #2
+  \end{exampleblock}
+}
+
+\newcommand{\boxx}[1]{
+  \colorbox{black}{
+    \color{green}{#1}
+  }
+}
+
+\newcommand{\imgby}[3]{
+  \begin{textblock*}{\paperwidth}[0.15,0](\textwidth,\textheight)
+    \raggedright{
+      \boxx{
+        \tiny{
+          Abbildung von \href{#2}{#1} (#3)
+        }
+      }
+    }
+  \end{textblock*}
+}
+
+\AtBeginSubsection[]{
+  \begin{frame}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame}
+}
+
+
+\title{Free Your Audio}
+
+\author[Mic]{Mic \flq nomaster@chaosdorf.de\frq}
+
+\institute[chaosdorf]{Chaos Computer Club Düsseldorf / Chaosdorf e.V.}
+
+\date[]{29. August 2012}
+
+\begin{document}
+
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+  \begin{frame}{Übersicht}
+    \tableofcontents
+  \end{frame}
+
+  \section{Motivation}
+
+  \begin{frame}{Warum dieser Vortrag?}
+    \begin{itemize}
+      \item Compact Disk ist voll achtziger
+      \pause
+      \item FTP zugemüllt
+      \pause
+      \item Mir fallen die Ohren ab
+      \pause
+      \item Wertschätzung » Faven
+      \pause
+      \item Freie Tools sind besser
+    \end{itemize}
+  \end{frame}
+
+  \section{Datenträger}
+
+  \begin{frame}{Compact Disk}
+    \two{
+      \begin{enumerate}
+        \renewcommand{\theenumi}{\Alph{enumi}}
+        \item Polykarbonat mit “Lands“ und “Pits” (Daten leben hier)
+        \item Spiegelnde Schicht
+        \item Schutzschicht
+        \item Beflockte Schicht mit Artwork
+        \item Laser-Kopf schießt durch Polykarbonat und nimmt das reflektierte Licht auf
+      \end{enumerate}
+    }{
+      \img{cd-layers.pdf}
+      \imgby{Wikimedia Commons}{https://en.wikipedia.org/wiki/File:CD\_layers.svg}{CC-BY-SA}
+    }
+  \end{frame}
+
+  \begin{frame}{Abspielen vs. Kopieren}
+    \begin{itemize}
+      \item Daten kopieren $\rightarrow$ Informationen übertragen
+      \item Kopierschutz $\rightarrow$ Schutz vor Informationsübertragung (?!)
+      \item Archivieren $\rightarrow$ sicheres Kopieren
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Archivieren}
+    \begin{itemize}
+      \item Für die Zukunft (lebendige Daten)
+      \item Verlustfrei (\textsl{alle} Daten)
+      \item Zugänglich (offene Formate)
+      \item Heute: dezentral (Replikation)
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Quelle}
+    Audio CD (Red Book)
+    \begin{itemize}
+      \item 1980 von Philips und Sony herausgegeben
+      \item Kein freies Format (bezahlt für Lizenzen!)
+      \item 2-channel signed 16-bit Linear PCM sampled at 44,100 Hz
+      \item \sout{Kopier}Abspielschutz lässt uns hassen
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Step 1: Rippen}
+    \concept{Paranoia}{
+      “Cdparanoia will read correct, rock-solid audio data
+      from inexpensive drives prone to misalignment, frame jitter and loss of
+      streaming during atomic reads. Cdparanoia will also read and repair data
+      from CDs that have been damaged in some
+      way.”\src{https://www.xiph.org/paranoia/faq.html}
+    }
+    \begin{itemize}
+      \pause
+      \item Kopiert Daten digital von der CD
+      \pause
+      \item Stellt sicher, dass dabei nichts schief geht
+      \pause
+      \item Kann sogar begrenzt Reparaturen vornehmen
+    \end{itemize}
+    \pause
+    “Suspicion breeds confidence!” (Brazil)
+  \end{frame}
+
+
+  \begin{frame}{Step 2: Komprimieren}
+    \concept{Free Lossless Audio Codec}{
+      “FLAC stands out as the fastest and most widely supported lossless audio
+      codec, and the only one that at once is non-proprietary, is unencumbered
+      by patents, has an open-source reference implementation, has a well
+      documented format and API, and has several other independent
+      implementations.”\src{http://flac.sourceforge.net/}
+    }
+    \begin{itemize}
+      \pause
+      \item Komprimiert Audiodaten verlustfrei
+      \pause
+      \item Erstellt Dateien in offenem Format
+      \pause
+      \item Ermöglicht Speichern von Metadaten
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Step 3: Indizieren}
+    \concept{MusicBrainz Picard}{
+      “MusicBrainz Picard is a cross-platform (Linux/Mac OS X/Windows)
+      application written in Python and is the official MusicBrainz tagger.
+
+      Picard supports the majority of audio file formats, is capable of using
+      audio fingerprints (PUIDs, AcoustIDs), performing CD lookups and disc ID
+      submissions, and it has excellent Unicode support. Additionally, there are
+      several plugins available that extend Picard's
+      features.”\src{http://musicbrainz.org/doc/MusicBrainz\_Picard}
+    }
+    \begin{itemize}
+      \pause
+      \item Offene Datenbank für Metadaten
+      \pause
+      \item Schreibt Metadaten in die Datei-Header
+      \pause
+      \item Kann Werke “erkennen”
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Step 4: Konsumieren}
+    \concept{Music Player Daemon}{
+      “Music Player Daemon (MPD) is a flexible, powerful, server-side
+      application for playing music. Through plugins and libraries it can play a
+      variety of sound files while being controlled by its network
+      protocol.”\src{http://mpd.wikia.com/wiki/Music\_Player\_Daemon\_Wiki}
+    }
+    \begin{itemize}
+      \pause
+      \item Erstellt Datenbank von Metadaten
+      \pause
+      \item Macht Inhalte auffindbar
+      \pause
+      \item Spielt Dateien ab
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Step 5: Transkodieren (Format)}
+    \concept{Ogg Vorbis}{
+      “Ogg Vorbis is a completely open, patent-free, professional audio encoding
+      and streaming technology with all the benefits of Open
+      Source.”\src{http://vorbis.com/}
+    }
+    \begin{itemize}
+      \pause
+      \item Komprimiert Audiodateien verlustbehaftet
+      \pause
+      \item Erstellt Dateien in ebenso offenem Format
+      \pause
+      \item Metadaten werden ebenso gespeichert
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Step 5: Transkodieren (Skript)}
+    \concept{Flac2All}{
+      “Flac2All is a multi-threaded script that will convert your collection of
+      FLAC files into either Ogg Vorbis, MP3 (with the Lame encoder), or FLAC,
+      complete with any tags and identical file/folder
+      structure.”\src{http://freecode.com/projects/flac2all}
+    }
+    \begin{itemize}
+      \pause
+      \item Transkodiert von FLAC nach Vorbis
+      \pause
+      \item Überspringt vorhandene Dateien
+      \pause
+      \item Kopiert Metadaten
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Step 6: Auf die Straße tragen}
+    \concept{Rockbox}{
+      “Rockbox is a free replacement firmware for digital music
+      players.”\src{http://www.rockbox.org/}
+    }
+    \begin{itemize}
+      \pause
+      \item Leistungsfähiger als deine Herstellerfirmware
+      \pause
+      \item Kann freie Formate tatsächlich abspielen
+      \pause
+      \item Audiophil (Normalisierung, gapless Playback, graphischer Equalizer)
+    \end{itemize}
+  \end{frame}
+
+\end{document}
