@@ -35,10 +35,12 @@
 }
 
 \newcommand{\concept}[2]{
-  \begin{block}{#1}
-    \pause
-    #2
-  \end{block}
+  \footnotesize{
+    \begin{block}{#1}
+      \pause
+      #2
+    \end{block}
+  }
 }
 
 \newcommand{\pattern}[2]{
@@ -157,11 +159,10 @@
 
   \begin{frame}{Step 1: Rippen}
     \concept{Paranoia}{
-      “Cdparanoia will read correct, rock-solid audio data
-      from inexpensive drives prone to misalignment, frame jitter and loss of
-      streaming during atomic reads. Cdparanoia will also read and repair data
-      from CDs that have been damaged in some
-      way.”\src{https://www.xiph.org/paranoia/faq.html}
+      CDparanoia liest korrekt und zuverlässig Audiodaten von billigen,
+      fehlerhaften Laufwerken aus. Außerdem liest es defekte CDs und repariert
+      den Datenstrom wenn möglich.
+      \src{https://www.xiph.org/paranoia/faq.html}
     }
     \begin{itemize}
       \pause
@@ -169,7 +170,7 @@
       \pause
       \item Stellt sicher, dass dabei nichts schief geht
       \pause
-      \item Kann sogar begrenzt Reparaturen vornehmen
+      \item Kompensiert “Herstellungsfehler” weitesgehend
     \end{itemize}
     \pause
     “Suspicion breeds confidence!” (Brazil)
@@ -178,11 +179,11 @@
 
   \begin{frame}{Step 2: Komprimieren}
     \concept{Free Lossless Audio Codec}{
-      “FLAC stands out as the fastest and most widely supported lossless audio
-      codec, and the only one that at once is non-proprietary, is unencumbered
-      by patents, has an open-source reference implementation, has a well
-      documented format and API, and has several other independent
-      implementations.”\src{http://flac.sourceforge.net/}
+      FLAC ist der schnellste und am weitesten verbreitete Codec für
+      verlustfreie Audiokomprimierung; und der einizge, der nicht-propietär und
+      ohne Patentbedrohung ist. Er hat eine quelloffene Referenzimplementierung,
+      ein gut dokumentiertes Format und API, sowie mehrere unabhängige
+      Implementierungen.\src{http://flac.sourceforge.net/}
     }
     \begin{itemize}
       \pause
@@ -196,14 +197,10 @@
 
   \begin{frame}{Step 3: Indizieren}
     \concept{MusicBrainz Picard}{
-      “MusicBrainz Picard is a cross-platform (Linux/Mac OS X/Windows)
-      application written in Python and is the official MusicBrainz tagger.
-
-      Picard supports the majority of audio file formats, is capable of using
-      audio fingerprints (PUIDs, AcoustIDs), performing CD lookups and disc ID
-      submissions, and it has excellent Unicode support. Additionally, there are
-      several plugins available that extend Picard's
-      features.”\src{http://musicbrainz.org/doc/MusicBrainz\_Picard}
+      Picard ist der offizielle, plattformunabhängige Tagger des
+      MusicBrainz-Projekts. Er unterstützt die Mehrheit an Audio-Dateiformaten
+      und kann Audio-Fingerprints sowie CD-Erkennung anwenden.
+      \src{http://musicbrainz.org/doc/MusicBrainz\_Picard}
     }
     \begin{itemize}
       \pause
@@ -217,10 +214,10 @@
 
   \begin{frame}{Step 4: Konsumieren}
     \concept{Music Player Daemon}{
-      “Music Player Daemon (MPD) is a flexible, powerful, server-side
-      application for playing music. Through plugins and libraries it can play a
-      variety of sound files while being controlled by its network
-      protocol.”\src{http://mpd.wikia.com/wiki/Music\_Player\_Daemon\_Wiki}
+      MPD ist ein flexibler, leistungsstarker Dienst zum Abspielen von Musik.
+      Mit Plug-Ins und Bibliotheken unterstützt er eine Vielzahl von
+      Dateiformaten und kann durch sein Netzwerkprotokoll gesteuert werden.
+      \src{http://mpd.wikia.com/wiki/Music\_Player\_Daemon\_Wiki}
     }
     \begin{itemize}
       \pause
@@ -234,9 +231,10 @@
 
   \begin{frame}{Step 5: Transkodieren (Format)}
     \concept{Ogg Vorbis}{
-      “Ogg Vorbis is a completely open, patent-free, professional audio encoding
-      and streaming technology with all the benefits of Open
-      Source.”\src{http://vorbis.com/}
+      Ogg Vorbis ist eine vollständig offene, patentfreie, professionelle Lösung
+      für Audio-Kodierung und -Streaming mit allen Vorteilen quelloffener
+      Software.
+      \src{http://vorbis.com/}
     }
     \begin{itemize}
       \pause
@@ -250,10 +248,10 @@
 
   \begin{frame}{Step 5: Transkodieren (Skript)}
     \concept{Flac2All}{
-      “Flac2All is a multi-threaded script that will convert your collection of
-      FLAC files into either Ogg Vorbis, MP3 (with the Lame encoder), or FLAC,
-      complete with any tags and identical file/folder
-      structure.”\src{http://freecode.com/projects/flac2all}
+      Flac2All ist ein multi-thread Skrtipt, welches deine Sammlung an
+      FLAC-Dateien in Ogg Vorbis, MP3 oder FLAC umwandelt und dabei die
+      Datei-/Verzeichnisstruktur übernimmt.
+      \src{http://freecode.com/projects/flac2all}
     }
     \begin{itemize}
       \pause
@@ -267,8 +265,8 @@
 
   \begin{frame}{Step 6: Auf die Straße tragen}
     \concept{Rockbox}{
-      “Rockbox is a free replacement firmware for digital music
-      players.”\src{http://www.rockbox.org/}
+      Rockbox ist ein freier Firmware-Ersatz für digitale Musik-Player.
+      \src{http://www.rockbox.org/}
     }
     \begin{itemize}
       \pause
