@@ -71,9 +71,18 @@
   \end{textblock*}
 }
 
-\AtBeginSubsection[]{
+\newcommand{\bgpage}[5]{
+  {
+    \usebackgroundtemplate{\includegraphics[width=\paperwidth]{#1}}
+    \begin{frame}{\boxx{#2}}
+      \imgby{#3}{#4}{#5}
+    \end{frame}
+  }
+}
+
+\AtBeginSection[]{
   \begin{frame}
-    \tableofcontents[currentsection, currentsubsection]
+    \tableofcontents[currentsection]
   \end{frame}
 }
 
@@ -100,7 +109,8 @@
 
   \begin{frame}{Warum dieser Vortrag?}
     \begin{itemize}
-      \item Compact Disk ist voll achtziger
+      \pause
+      \item CDs sind voll achtziger
       \pause
       \item FTP zugemüllt
       \pause
@@ -112,7 +122,35 @@
     \end{itemize}
   \end{frame}
 
+  \section{Problem}
+
+  \begin{frame}{Thermodynamik}
+    \begin{itemize}
+      \pause
+      \item Alles wird zu staub
+      \pause
+      \item CDs, Schallplatten und dergleichen werden unlesbar
+      \pause
+      \item Mechanisches Kopieren aufwändig
+    \end{itemize}
+  \end{frame}
+
+  \bgpage{library.jpg}{Suzzallo Library, University of Washington}{https://secure.flickr.com/photos/daves-f-stop/7255333900/}{CC-BY-NC-SA}
+
+  \begin{frame}{Archivieren}
+    \begin{itemize}
+      \pause
+      \item Verlustfrei (\textsl{alle} Daten)
+      \pause
+      \item Zugänglich (offene Formate)
+      \pause
+      \item Dezentral (Replikation)
+    \end{itemize}
+  \end{frame}
+
   \section{Datenträger}
+
+  \bgpage{cd-player.jpg}{CD Player}{rockheim}{https://secure.flickr.com/photos/27485954@N07/4944480867/}{CC-BY-SA}
 
   \begin{frame}{Compact Disk}
     \two{
@@ -130,23 +168,6 @@
     }
   \end{frame}
 
-  \begin{frame}{Abspielen vs. Kopieren}
-    \begin{itemize}
-      \item Daten kopieren $\rightarrow$ Informationen übertragen
-      \item Kopierschutz $\rightarrow$ Schutz vor Informationsübertragung (?!)
-      \item Archivieren $\rightarrow$ sicheres Kopieren
-    \end{itemize}
-  \end{frame}
-
-  \begin{frame}{Archivieren}
-    \begin{itemize}
-      \item Für die Zukunft (lebendige Daten)
-      \item Verlustfrei (\textsl{alle} Daten)
-      \item Zugänglich (offene Formate)
-      \item Heute: dezentral (Replikation)
-    \end{itemize}
-  \end{frame}
-
   \begin{frame}{Quelle}
     Audio CD (Red Book)
     \begin{itemize}
@@ -156,6 +177,26 @@
       \item \sout{Kopier}Abspielschutz lässt uns hassen
     \end{itemize}
   \end{frame}
+
+  \begin{frame}{Abspielen vs. Kopieren}
+    \two{
+      Implikationen:
+      \begin{itemize}
+        \pause
+        \item Daten kopieren $\rightarrow$ Informationen übertragen
+        \pause
+        \item Kopierschutz $\rightarrow$ Schutz vor Informationsübertragung (?!)
+        \pause
+        \item Archivieren $\rightarrow$ sicheres Kopieren
+      \end{itemize}
+    }{
+      \img{record.jpg}
+      \pause
+      \imgby{KennethMoyle}{https://secure.flickr.com/photos/moylek/2272466479/}{CC-BY-NC}
+    }
+  \end{frame}
+
+  \section{Der Prozess}
 
   \begin{frame}{Step 1: Rippen}
     \concept{Paranoia}{
@@ -177,6 +218,7 @@
   \end{frame}
 
 
+
   \begin{frame}{Step 2: Komprimieren}
     \concept{Free Lossless Audio Codec}{
       FLAC ist der schnellste und am weitesten verbreitete Codec für
@@ -195,6 +237,8 @@
     \end{itemize}
   \end{frame}
 
+  \bgpage{collection.jpg}{Kollektion}{Snap Man}{https://secure.flickr.com/photos/kkanouse/163992201/}{CC-BY-NC}
+
   \begin{frame}{Step 3: Indizieren}
     \concept{MusicBrainz Picard}{
       Picard ist der offizielle, plattformunabhängige Tagger des
@@ -211,6 +255,8 @@
       \item Kann Werke “erkennen”
     \end{itemize}
   \end{frame}
+
+  \bgpage{hackerspace.jpg}{Hackerspace}{dvanzuijlekom}{https://secure.flickr.com/photos/dvanzuijlekom/6863786300/}{CC-BY-SA}
 
   \begin{frame}{Step 4: Konsumieren}
     \concept{Music Player Daemon}{
@@ -263,6 +309,8 @@
     \end{itemize}
   \end{frame}
 
+  \bgpage{walkman.jpg}{Walkman}{nitot}{https://secure.flickr.com/photos/nitot/2601178074/}{CC-BY-NC-SA}
+
   \begin{frame}{Step 6: Auf die Straße tragen}
     \concept{Rockbox}{
       Rockbox ist ein freier Firmware-Ersatz für digitale Musik-Player.
@@ -277,5 +325,7 @@
       \item Audiophil (Normalisierung, gapless Playback, graphischer Equalizer)
     \end{itemize}
   \end{frame}
+
+  \bgpage{crystal.jpg}{Future Storage?}{cobalt123}{https://secure.flickr.com/photos/cobalt/680703130/}{CC-BY-NC-SA}
 
 \end{document}
